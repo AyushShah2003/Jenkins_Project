@@ -1,0 +1,76 @@
+1. By.id() – Most reliable (if present)
+WebElement username = driver.findElement(By.id("username"));
+
+2. By.name() – Common in forms
+WebElement email = driver.findElement(By.name("email"));
+
+3. By.className() – For simple single-class elements
+driver.findElement(By.className("className"));
+
+4. By.tagName() – For elements like h1, p, a, etc.
+driver.findElement(By.tagName("h1"));
+
+5. By.linkText() – Only for full visible text of <a> tags
+driver.findElement(By.linkText("Click here"));
+
+6. By.partialLinkText() – Matches part of link text
+driver.findElement(By.partialLinkText("Click"));
+
+7. By.cssSelector() – Very flexible
+driver.findElement(By.cssSelector("div#login input[type='text']"));
+#id            --> element with specific ID
+.class         --> element with class
+tag[attr='val'] --> element with attribute
+
+8. By.xpath() – Most powerful, handles complex DOM
+driver.findElement(By.xpath("//input[@id='username']"));
+
+//h1                   --> any <h1> element
+//div[@id='main']      --> div with id=main
+//input[@type='checkbox'] --> all checkboxes
+//div[@id='main']//h1  --> h1 inside div with id=main
+//button[text()='Login'] --> button with visible text
+
+Dynamic Elements: xpath
+1. Using and Operator
+//TagName[@Att1='Value1' and @Att2='Value2']
+//TagName[@Att='Value' and Text()='Value']
+
+2. Using or Operator
+//TagName[@Att1='Value1' OR @Att2='Value2']
+//TagName[@Att='Value' OR Text()='Value']
+
+3. Using contains
+//TagName[contains(@Att, 'Partial Value')]
+//TagName[contains(text(), 'Partial Value')]
+
+4. Using starts-with
+//TagName[starts-with(@Att, 'Starting Value')]
+//TagName[starts-with(text(), 'Starting Value')]
+
+5. Hybrid
+//TagName[contains(@Att1, 'Partial Value') and starts-with(text(), 'Starting Value')]
+//TagName[contains(@Att1, 'Partial Value') or starts-with(@Att2, 'Starting Value')]
+
+CSS Selectors
+1. Using partial value of attribute (Symbol – *)
+Example: TagName[Att1*='Partial Value']
+
+2. Using starting value of attribute (Symbol ^)
+Example: TagName[Att1^='Starting Value']
+
+3. Using ending value of attribute (Symbol $)
+Example: TagName[Att1$='Ending Value']
+
+4. ANDING the Attributes (No Symbol Required)
+Syntax: TagName[Att1=Value][Att2=Value]
+
+5. ORING the Attributes (',' will work as 'OR')
+Syntax: TagName[Att1=Value], TagName[Att2=Value]
+
+Using only TagName and Attribute Name ->
+Node1,Node2 => Matches all Node1s and Node2s
+Node1 Node2 => Matches all Node2s which are descendant of Node1
+Node1>Node2 => Matches all Node2s which are children of Node1
+Node1+Node2 => Matches sibling Node2 placed immediately after Node1
+Node1~Node2 => Matches all sibling Node2s placed after Node1
